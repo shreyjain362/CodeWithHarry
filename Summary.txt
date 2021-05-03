@@ -1,2 +1,7 @@
 Shift rt click :   Expanded rt click menu
 Ctrl++  :  To zoom in git bash
+
+git status
+git add --a  :  To stage the changes
+git commit -m "Initial commit"  :  To commit the changes
+git log  :  To see the commit history
