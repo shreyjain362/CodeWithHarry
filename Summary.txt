@@ -1,1 +1,2 @@
 Shift rt click :   Expanded rt click menu
+Ctrl++  :  To zoom in git bash
