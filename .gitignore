@@ -1,7 +1,9 @@
+contx/
 #Comments should always start at the beginning of the line.
+#Dirs should come before any blank line or comment
+#Ignoring a dir only ignores new files created inside it. It does not include editing of existing files.
+#/contx/
+#This ignores only contx's present in the root dir
 
 #error.log
 *.log
-
-contx/	
-#This removes only contx's present in the root dir
