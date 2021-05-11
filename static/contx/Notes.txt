@@ -1,0 +1,1 @@
+Empty directory is ignored by Git by default.

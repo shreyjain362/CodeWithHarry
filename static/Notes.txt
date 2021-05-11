@@ -1,0 +1,1 @@
+A folder with nothing but ignored contents, is considered empty and hence ignored.

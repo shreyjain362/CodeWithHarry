@@ -1,0 +1,5 @@
+#Comments should always start at the beginning of the line.
+#error.log
+*.log
+contx/	
+#This removes only contx's present in the root dir

@@ -1,7 +1,19 @@
 Shift rt click :   Expanded rt click menu
 Ctrl++  :  To zoom in git bash
+Press Tab to autocomplete in bash
 
 git status
-git add --a  :  To stage the changes
+git add --a  :  To stage the changes in all files
+git add Summary.txt  :  
 git commit -m "Initial commit"  :  To commit the changes
 git log  :  To see the commit history
+Press Q to quit git log
+rm -rf .git  :  To delete .git and hence remove repository feature from the folder
+
+Tracking of tusk by its own .git is independent from that by the .git of its parent folder Git.
+Clones of the outer repository will not contain the contents of the embedded repository and will 
+not know how to obtain it.
+
+.gitignore file contains all the files that Git should ignore.
+
+
