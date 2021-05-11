@@ -16,6 +16,8 @@ not know how to obtain it.
 
 .gitignore file contains all the files that Git should ignore.
 git diff  :  Compares current state of the file with the "copy" present in staging area
-git diff --stage  :  Compares current state with the last commit
+git diff --staged  :  Compares staging area with the last commit
+Red color shows deletion and green shows addition of a line to the file we are comparing with.
+
 
 
