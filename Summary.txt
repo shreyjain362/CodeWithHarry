@@ -15,5 +15,7 @@ Clones of the outer repository will not contain the contents of the embedded rep
 not know how to obtain it.
 
 .gitignore file contains all the files that Git should ignore.
+git diff  :  Compares current state of the file with the "copy" present in staging area
+git diff --stage  :  Compares current state with the last commit
 
 
