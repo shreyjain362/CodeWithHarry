@@ -45,8 +45,17 @@ git log --pretty=format:"%h -- %an"  :  Shows commit logs in the stated format
 %ae  :  author email id
 
 git commit --amend  :  To incorporate a change in staging area to the previous commit. You can also the message of the last commit. 
-git checkout --file_name  :  Restores the state of file to the last commit. Does not work for .gitignore and untracked files.
-git checkout -f  :  Does restoration for all files
+git checkout -- file_name  :  Restores the state of file to the last commit. Does not work for .gitignore and untracked files.
+git checkout -f  :  Does restoration for all files 
+
+git remote add remote_name git@github.com:shreyjain362/repo_name.git  : Maps a remote repository repo_name's link to remote_name
+git remote  :  Lists all name of remote servers
+git remote -v  :  Lists name and URI of all remote servers
+Follow the steps given in https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+to set up SSH connection to GitHub as well as set up the SSH agent on your machine.
+ssh_key contains private key, ssh_key.pub contains public key (Copied to your GitHub account)
+tail ssh_key.pub  :  Same as cat ssh_key.pub
+git push -u remote_name master  :  "Pushes" current repository into branch master on remote_name 
 
 
 
