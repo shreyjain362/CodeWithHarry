@@ -1,1 +1,1 @@
-With /cont/ this dir is ignored. But the dir inside static is not.
+With /contx/ this dir is ignored. But the dir inside static is not.

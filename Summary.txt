@@ -1,12 +1,15 @@
 Shift rt click :   Expanded rt click menu
 Ctrl++  :  To zoom in git bash
-Press Tab to autocomplete in bash
+Press Tab to autocomplete in bash, linux or mac
+Press Shift + Ins to paste in git bash.
 
 git status
 git add --a  :  To stage the changes in all files
 git add Summary.txt  :  
 git commit -m "Initial commit"  :  To commit the changes
 git log  :  To see the commit history
+git log -p  :  To see not only commit names, but also the actual changes (diff's) done in each commit.
+git log -2  :  To see ony the last 2 commits. This can b combined with -p flag.
 Press Q to quit git log
 rm -rf .git  :  To delete .git and hence remove repository feature from the folder
 
@@ -15,10 +18,21 @@ Clones of the outer repository will not contain the contents of the embedded rep
 not know how to obtain it.
 
 .gitignore file contains all the files that Git should ignore.
+If a file has been getting tracked earlier, then you should run git rm --cached file_name to remove tracking it.
+With git status, the terminal will display deleted, but it will not delete it.
+
 git diff  :  Compares current state of the file with the "copy" present in staging area
 git diff --staged  :  Compares staging area with the last commit
 Red color shows deletion and green shows addition of a line to the file we are comparing with.
 git commit -a -m "message"  :  Directly commits all "tracked" files without we having to stage first
+
+If you rename a file, Git thinks it is deleted and a new file with that new name is created.
+If you then stage the new file, git then knows that the new file is actually a renamed version of the old file.
+
+Rather than renaming the file in the GUI, use git bash to rename. Then, it will recognize renaming before staging.
+Similarly, for delete operation.
+
+
 
 
 
