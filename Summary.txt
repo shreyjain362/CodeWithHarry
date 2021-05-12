@@ -56,7 +56,7 @@ to set up SSH connection to GitHub as well as set up the SSH agent on your machi
 ssh_key contains private key, ssh_key.pub contains public key (Copied to your GitHub account)
 tail ssh_key.pub  :  Same as cat ssh_key.pub
 git push -u remote_name master  :  "Pushes" current repository into branch master on remote_name. If the branch already exists,
-				   it merges the two copies (local and remote).
+				   it shows error.
  
 
 
