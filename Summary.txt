@@ -46,6 +46,7 @@ git log --pretty=format:"%h -- %an"  :  Shows commit logs in the stated format
 
 git commit --amend  :  To incorporate a change in staging area to the previous commit. You can also the message of the last commit. 
 git checkout -- file_name  :  Restores the state of file to the last commit. Does not work for .gitignore and untracked files.
+			      Space between -- and file_name is necessary.
 git checkout -f  :  Does restoration for all files 
 
 git remote add remote_name git@github.com:shreyjain362/repo_name.git  : Maps a remote repository repo_name's link to remote_name
