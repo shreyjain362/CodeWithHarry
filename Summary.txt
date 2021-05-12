@@ -8,8 +8,6 @@ git add --a  :  To stage the changes in all files
 git add Summary.txt  :  
 git commit -m "Initial commit"  :  To commit the changes
 git log  :  To see the commit history
-git log -p  :  To see not only commit names, but also the actual changes (diff's) done in each commit.
-git log -2  :  To see ony the last 2 commits. This can b combined with -p flag.
 Press Q to quit git log
 rm -rf .git  :  To delete .git and hence remove repository feature from the folder
 
@@ -32,6 +30,23 @@ If you then stage the new file, git then knows that the new file is actually a r
 Rather than renaming the file in the GUI, use git bash to rename. Then, it will recognize renaming before staging.
 Similarly, for delete operation.
 
+git log  :  To see the commit history
+git log -p  :  To see not only commit names, but also the actual changes (diff's) done in each commit.
+git log -2  :  To see ony the last 2 commits. This can b combined with other flags like -p.
+git log --stat  :  To see very brief description of each commit
+git log --pretty  :  To see just commit name and its message, one in each line, in list format, easy to print.
+git log --pretty=short  :  Commit name and authors (creater) of files, not in list format
+git log --pretty=full  :  Commit name, its doer and authors, not in list format
+git log --since=2.days  :  Commits done in past 2 days
+git log --pretty=format:"%h -- %an"  :  Shows commit logs in the stated format
+%H  :  Commit hash
+%h  :  Abbreivated commit hash
+%an  :  author name
+%ae  :  author email id
+
+git commit --amend  :  To incorporate a change in staging area to the previous commit. You can also the message of the last commit. 
+git checkout --file_name  :  Restores the state of file to the last commit. Does not work for .gitignore and untracked files.
+git checkout -f  :  Does restoration for all files
 
 
 
