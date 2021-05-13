@@ -1,1 +1,0 @@
-With /contx/ this dir is ignored. But the dir inside static is not.
