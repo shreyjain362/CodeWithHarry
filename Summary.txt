@@ -45,9 +45,9 @@ git log --pretty=format:"%h -- %an"  :  Shows commit logs in the stated format
 %ae  :  author email id
 
 git commit --amend  :  To incorporate a change in staging area to the previous commit. You can also the message of the last commit. 
-git checkout -- file_name  :  Restores the state of file to the last commit. Does not work for .gitignore and untracked files.
+git restore -- file_name  :  Restores the state of file to the last commit. This is called unstaging. Does not work for .gitignore and untracked files.
 			      Space between -- and file_name is necessary.
-git checkout -f  :  Does restoration for all files 
+git restore -f  :  Does restoration for all files 
 
 git remote add remote_name git@github.com:shreyjain362/repo_name.git  : Maps a remote repository repo_name's link to remote_name
 git remote  :  Lists all name of remote servers
@@ -56,8 +56,16 @@ Follow the steps given in https://docs.github.com/en/github/authenticating-to-gi
 to set up SSH connection to GitHub as well as set up the SSH agent on your machine.
 ssh_key contains private key, ssh_key.pub contains public key (Copied to your GitHub account)
 tail ssh_key.pub  :  Same as cat ssh_key.pub
-git push -u remote_name master  :  "Pushes" current repository into branch master on remote_name. If the branch already exists,
+git push -u remote_name master  :  "Pushes" the current branch master on remote_name with the same branch name. If the branch already exists,
 				   it shows error.
+git config --global alias.alias_name 'command or part of it'  :  This just replaces the alias_name wherever it occurs with the command inside the single quotes.
+								The single quotes are not needed if there is just one word.
+git config --global alias.unstage 'restore --staged --'  :   Creates alias unstage
+git unstage file_name  :  Unstages the file
+git config --global alias.last 'git log -p -1'  :  Although the alias is created, neither last nor git last works
+git checkout -b new_branch  :  Creates a new branch new_branch and starts with the last commit on the current branch. Remember to commit your work done in the current branch, else it will be lost.
+git checkout other_branch  :  Switches to other_branch. Your workspace changes accordingly.
+
  
 
 
