@@ -17,7 +17,7 @@ git add --a  :  Same as git add . command.
 git commit -m "commit message"  :  To commit the changes
 git commit -a -m "message"  :  Directly commits all "tracked" files without we having to stage first
 git commit --amend  :  To incorporate a change in staging area to the previous commit. You can also the message of the last commit. 
-git commit -m --amend  :  Same as above, but does not ask you to re-visit the commit message.
+git commit -m --amend  :  Takes --amend as commit message.
 
 rm -rf .git  :  To delete .git and hence cease the repo feature from the dir.
 git command_name --help  :  Opens manual pages in Chrome
@@ -88,6 +88,7 @@ ssh-add ssh_key  :  Adds key stored in file ssh_key to ssh agent
 ssh_key contains private key, ssh_key.pub contains public key (Copied to your GitHub account)
 tail ssh_key.pub  :  Same as cat ssh_key.pub
 It seems to me that SSH keys expire after a while, and hence regenerate them again if you see an error saying invalid format.
+After this, in case you see an error saying "We're doing an SSH key audit.", visit the Settings/Keys page on your account, or just click on the link given in the error, and click Approve on the key to be used.
 
 git push -u remote_repo branch_name  :  "Pushes" the branch_name on remote_repo with the same branch name. If a branch with name branch_name already exists, it may show error because of merging conflicts. 
 				   In that case, first "integrate" the remote repo branch by pulling it and then try again.
@@ -98,7 +99,6 @@ git push -d remote_repo branch_name_for_repo  :  Deletes branch_name_for_repo.
 git fetch  :  Updates remote_repo/branch_name reference in your local machine for all branches. Use git checkout remote_repo/branch_name to see the changes.
 git pull  :  Fetches from remote_repo and merges with the corresponding branch on your local repo for all branches.
 git clone url  :  Clones a remote repo along with its .git into your local machine. URL may be HTTPS or SSH (Just copy and paste the respective url's from the green Code download button on GitHub. Don't add ssh:// before the ssh url.)
-		  In case you see an error saying "We're doing an SSH key audit.", visit the Settings/Keys page on your account, or just click on the link given in the error, and click Approve on the key to be used.
 Forking refers to cloning on GitHub.
 
 -------------------------------------------------------------ALIASING-------------------------------------------------------------
