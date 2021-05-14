@@ -17,6 +17,7 @@ git add --a  :  Same as git add . command.
 git commit -m "commit message"  :  To commit the changes
 git commit -a -m "message"  :  Directly commits all "tracked" files without we having to stage first
 git commit --amend  :  To incorporate a change in staging area to the previous commit. You can also the message of the last commit. 
+git commit -m --amend  :  Same as above, but does not ask you to re-visit the commit message.
 
 rm -rf .git  :  To delete .git and hence cease the repo feature from the dir.
 git command_name --help  :  Opens manual pages in Chrome
