@@ -74,8 +74,8 @@ git restore --staged file_name  :  Unstages a file but does not edit it.
 
 -------------------------------------------------------------REMOTE REPOSITORY-------------------------------------------------------------
 
-git remote add remote_name git@github.com:shreyjain362/repo_name.git  : Maps a remote repo repo_name's link to remote_name. Used for SSH.
-git remote add remote_name https://github.com/shreyjain362/CodeWithHarry.git  :  Used for HTTPS
+git remote add remote_repo git@github.com:shreyjain362/repo_name.git  : Maps a remote repo repo_name's link to remote_repo. Used for SSH.
+git remote add remote_repo https://github.com/shreyjain362/CodeWithHarry.git  :  Used for HTTPS
 git remote  :  Lists all name of remote servers
 git remote -v  :  Lists name and URI of all remote servers
 
@@ -87,11 +87,14 @@ ssh-add ssh_key  :  Adds key stored in file ssh_key to ssh agent
 ssh_key contains private key, ssh_key.pub contains public key (Copied to your GitHub account)
 tail ssh_key.pub  :  Same as cat ssh_key.pub
 
-git push -u remote_name master  :  "Pushes" the current branch master on remote_name with the same branch name. If the branch already exists, it may show error because of merging conflicts. 
-				   In that case, first "integrate" the remote repo by pulling it and then try again.
-git push remote_name master  :  Same as above command, but now you must write git pull remote_repo_url instead of just git pull to pull.
-git fetch  :  Updates remote_name/branch_name reference in your local machine. 
-git pull  :  Fetches from remote_name and merges with the corresponding branch on your local repo.
+git push -u remote_repo branch_name  :  "Pushes" the branch_name on remote_repo with the same branch name. If a branch with name branch_name already exists, it may show error because of merging conflicts. 
+				   In that case, first "integrate" the remote repo branch by pulling it and then try again.
+git push remote_repo branch_name  :  Same as above command, but now you must write git pull remote_repo_url instead of just git pull to pull.
+Different branches need to be pushed separately.
+git push remote_repo branch_name:branch_name_for_repo  :  Pushes branch_name as branch_name_for_repo on remote repo.
+git push -d remote_repo branch_name_for_repo  :  Deletes branch_name_for_repo.
+git fetch  :  Updates remote_repo/branch_name reference in your local machine for all branches. 
+git pull  :  Fetches from remote_repo and merges with the corresponding branch on your local repo for all branches.
 git clone url  :  Clones a remote repo along with its .git into your local machine. URL may be HTTPS or SSH (Just copy and paste the respective url's from the green Code download button on GitHub. Don't add ssh:// before the ssh url.)
 		  In case you see an error saying "We're doing an SSH key audit.", visit the Settings/Keys page on your account, or just click on the link given in the error, and click Approve on the key to be used.
 Forking refers to cloning on GitHub.
