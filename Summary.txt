@@ -1,36 +1,58 @@
+-------------------------------------------------------------SHORTCUTS--------------------------------------------------------
+
 Shift rt click :   Expanded rt click menu
 Ctrl++  :  To zoom in git bash
 Press Tab to autocomplete in bash, linux or mac
 Press Shift + Ins to paste in git bash.
 
-git status
-git add --a  :  To stage the changes in all files
-git add Summary.txt  :  
-git commit -m "Initial commit"  :  To commit the changes
-git log  :  To see the commit history
-Press Q to quit git log
-rm -rf .git  :  To delete .git and hence remove repository feature from the folder
+-------------------------------------------------------------BASIC COMMANDS--------------------------------------------------------
+git init  :  Initialises a dir as a git repo
+git status  :  Shows file status of all files and dirs
 
-Tracking of tusk by its own .git is independent from that by the .git of its parent folder Git.
-Clones of the outer repository will not contain the contents of the embedded repository and will 
-not know how to obtain it.
+git add --a  :  
+git add file_name  :  If file_name is untracked, this starts tracking it. Else this stages the changes in file_name.
+git add .  :  To stage the changes (or to start tracking, if a case arises) in all files
+git add --a  :  Same as git add . command.
+
+git commit -m "commit message"  :  To commit the changes
+git commit -a -m "message"  :  Directly commits all "tracked" files without we having to stage first
+git commit --amend  :  To incorporate a change in staging area to the previous commit. You can also the message of the last commit. 
+
+rm -rf .git  :  To delete .git and hence cease the repo feature from the dir.
+git command_name --help  :  Opens manual pages in Chrome
+
+git diff  :  Compares current state of the file with the version present in staging area
+git diff --staged  :  Compares staging area with the last commit
+Red color shows deletion and green shows addition of a line to the file we are comparing with.
+
+When working with Git, only one branch can be checked out at a time - and this is what's 
+called the "HEAD" branch. Often, this is also referred to as the "active" or "current" branch.
+
+Use single quotes to write the name of a dir whose name contains spaces, e.g., 'Basic Tut'/.gitignore
+
+Avoid creating a repo within a repo. This occurs, for example, while cloning a remote repo into your existing repo. Tracking of a cloned repo by its own .git is independent from that by the .git of its parent folder Git.
+Clones of the outer repo will not contain its contents. Even when you push the outer repo, the cloned repo dir shows a strange icon on GithHub which is not clickable.
+Hence, always cease the repo of the cloned dir before working with it.
+
+If you rename a file, Git thinks it is deleted and a new file with that new name is created. If you then stage the new file, git then knows that the new file is actually a renamed version of the old file.
+Rather than renaming the file in the GUI, use git bash to rename. Then, it will recognize renaming before staging. Similarly, for delete operation.
+
+Public repositories are accessible to everyone on the internet. Private repositories are only accessible to you and people you explicitly share access with.
+
+-------------------------------------------------------------FILE STATUS LIFECYCLE-------------------------------------------------------------
+
+See the image in https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository. Some additional inputs are:
+Editing a file in Staging area makes it modified status.
+
+-------------------------------------------------------------.GITIGNORE-------------------------------------------------------------
 
 .gitignore file contains all the files that Git should ignore.
 If a file has been getting tracked earlier, then you should run git rm --cached file_name to remove tracking it.
 With git status, the terminal will display deleted, but it will not delete it.
 
-git diff  :  Compares current state of the file with the "copy" present in staging area
-git diff --staged  :  Compares staging area with the last commit
-Red color shows deletion and green shows addition of a line to the file we are comparing with.
-git commit -a -m "message"  :  Directly commits all "tracked" files without we having to stage first
+-------------------------------------------------------------LOGS----------------------------------------------------------
 
-If you rename a file, Git thinks it is deleted and a new file with that new name is created.
-If you then stage the new file, git then knows that the new file is actually a renamed version of the old file.
-
-Rather than renaming the file in the GUI, use git bash to rename. Then, it will recognize renaming before staging.
-Similarly, for delete operation.
-
-git log  :  To see the commit history
+git log  :  To see the commit history. Press Q to quit git log.
 git log -p  :  To see not only commit names, but also the actual changes (diff's) done in each commit.
 git log -2  :  To see ony the last 2 commits. This can b combined with other flags like -p.
 git log --stat  :  To see very brief description of each commit
@@ -44,26 +66,46 @@ git log --pretty=format:"%h -- %an"  :  Shows commit logs in the stated format
 %an  :  author name
 %ae  :  author email id
 
-git commit --amend  :  To incorporate a change in staging area to the previous commit. You can also the message of the last commit. 
-git restore -- file_name  :  Restores the state of file to the last commit. This is called unstaging. Does not work for .gitignore and untracked files.
-			      Space between -- and file_name is necessary.
-git restore -f  :  Does restoration for all files 
+-------------------------------------------------------------RESTORE-------------------------------------------------------------
 
-git remote add remote_name git@github.com:shreyjain362/repo_name.git  : Maps a remote repository repo_name's link to remote_name. Used for SSH.
+git restore file_name  :  Restores the state of file to the last commit. Does not work for ignored and untracked files.
+git restore .  :  Restores all the files in pwd
+git restore --staged file_name  :  Unstages a file but does not edit it.
+
+-------------------------------------------------------------REMOTE REPOSITORY-------------------------------------------------------------
+
+git remote add remote_name git@github.com:shreyjain362/repo_name.git  : Maps a remote repo repo_name's link to remote_name. Used for SSH.
 git remote add remote_name https://github.com/shreyjain362/CodeWithHarry.git  :  Used for HTTPS
 git remote  :  Lists all name of remote servers
 git remote -v  :  Lists name and URI of all remote servers
+
 Follow the steps given in https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 to set up SSH connection to GitHub as well as set up the SSH agent on your machine.
+ssh-keygen -t ed25519 -C "your_email@example.com"  :  Generates a public/private key pair. You can also use rsa instead of ed25519 algorithm. Note that ed25519-sk is not supported on my system.
+eval `ssh-agent -s`  :  Launches the ssh agent on your machine
+ssh-add ssh_key  :  Adds key stored in file ssh_key to ssh agent
 ssh_key contains private key, ssh_key.pub contains public key (Copied to your GitHub account)
 tail ssh_key.pub  :  Same as cat ssh_key.pub
-git push -u remote_name master  :  "Pushes" the current branch master on remote_name with the same branch name. If the branch already exists,
-				   it shows error.
+
+git push -u remote_name master  :  "Pushes" the current branch master on remote_name with the same branch name. If the branch already exists, it may show error because of merging conflicts. 
+				   In that case, first "integrate" the remote repo by pulling it and then try again.
+git push remote_name master  :  Same as above command, but now you must write git pull remote_repo_url instead of just git pull to pull.
+git fetch  :  Updates remote_name/branch_name reference in your local machine. 
+git pull  :  Fetches from remote_name and merges with the corresponding branch on your local repo.
+git clone url  :  Clones a remote repo along with its .git into your local machine. URL may be HTTPS or SSH (Just copy and paste the respective url's from the green Code download button on GitHub. Don't add ssh:// before the ssh url.)
+		  In case you see an error saying "We're doing an SSH key audit.", visit the Settings/Keys page on your account, or just click on the link given in the error, and click Approve on the key to be used.
+Forking refers to cloning on GitHub.
+
+-------------------------------------------------------------ALIASING-------------------------------------------------------------
+
 git config --global alias.alias_name 'command or part of it'  :  This just replaces the alias_name wherever it occurs with the command inside the single quotes.
 								The single quotes are not needed if there is just one word.
 git config --global alias.unstage 'restore --staged --'  :   Creates alias unstage
 git unstage file_name  :  Unstages the file
 git config --global alias.last 'git log -p -1'  :  Although the alias is created, neither last nor git last works
+
+-------------------------------------------------------------PLAYING WITH BRANCHES-------------------------------------------------------------
+
 git checkout -b new_branch  :  Creates a new branch new_branch and starts with the last commit on the current branch. Remember to commit your work done in the current branch, else it will be lost.
 git checkout other_branch  :  Switches to other_branch. Your workspace changes accordingly. On VS Code with Live Server, the website automatically changes without even refreshing!
 			      Open files, if saved in new_branch or other_branch, create a tracked copy there. You must delete either it or the original (in the older branch) copy to merge the two branches.
@@ -78,9 +120,3 @@ git branch --merged  :  Branches which have been copied into some other branch a
 git branch --no-merged  :  Branches which have not been copied into some other branch
 git branch -d branch_name  :  Deletes branch_name. Gives error if branch_name has not been copied into some other branch.
 git branch -D branch_name  :  No error even if branch_name has not been copied.
-
- 
-
-
-
-
